@@ -38,11 +38,11 @@ class User(AbstractBaseUser):
         return self.email
 
     
-    # def has_module_perms(self, app_label):
-    #     return self.is_staff
+    def has_module_perms(self, app_label):
+        return self.is_staff
     
-    # def has_perm(self, obj):
-    #     return self.is_staff
+    def has_perm(self, obj):
+        return self.is_staff
     
     @staticmethod
     def generate_activation_code():

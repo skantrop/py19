@@ -15,9 +15,20 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from main.views import *
+from rest_framework.routers import SimpleRouter
+
+router = SimpleRouter()
+router.register('products', ProductViewSet)
+router.register('reviews', ReviewViewSet)
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('account/', include('account.urls')),
+    path('category/', CategoryCreateView.as_view()),
+    path('', include(router.urls)),
+    path('favorites/', FavoriteView.as_view()),
+
 ]
 
