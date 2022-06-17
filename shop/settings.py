@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/4.0/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
-
+import os
 from datetime import timedelta
 from pathlib import Path
 from decouple import config
@@ -43,7 +43,9 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'rest_framework_simplejwt',
-
+    'whitenoise.runserver_nostatic',
+    'corsheaders',
+    
     #apps
     'account',
     'main',
@@ -130,8 +132,25 @@ AUTH_USER_MODEL = 'account.User'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-STATIC_URL = 'static/'
+# STATIC_URL = 'static/'
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_URL = '/static/'
+
+STATICFILES_DIRS = (
+    os.path.join(BASE_DIR, 'static'),
+)
+
+STATICFILES_FINDERS = (
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
@@ -159,3 +178,22 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ]
 }
+
+
+
+
+# CORS_ORIGIN_ALLOW_ALL = True
+CORS_ALLOW_ORIGINS = [
+    'http://localhost:3000',
+    'http://localhost:3001', 
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:3001', 
+    'https://www.thunderclient.com',
+]
+CORS_ORIGIN_WHITELIST = [
+    'http://localhost:3000',
+    'http://localhost:3001', 
+    'http://127.0.0.1:3000',
+    'http://127.0.0.1:3001', 
+    'https://www.thunderclient.com',
+]
