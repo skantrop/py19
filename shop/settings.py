@@ -42,7 +42,9 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'rest_framework_simplejwt',
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     'corsheaders',
 
     #apps
