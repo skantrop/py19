@@ -87,11 +87,11 @@ WSGI_APPLICATION = 'shop.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': config('DB_ENGINE'),
-        # 'NAME': config('DB_NAME'),
-        # 'USER': config('DB_USER'),
-        # 'PASSWORD': config('DB_PASSWORD'),
-        # 'HOST': config('DB_HOST'),
-        # 'PORT': config('DB_PORT', cast=int)
+        'NAME': config('DB_NAME'),
+        'USER': config('DB_USER'),
+        'PASSWORD': config('DB_PASSWORD'),
+        'HOST': config('DB_HOST'),
+        'PORT': config('DB_PORT', cast=int)
     }
 }
 import dj_database_url
@@ -138,9 +138,9 @@ AUTH_USER_MODEL = 'account.User'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = (
-    os.path.join(BASE_DIR, 'static'),
-)
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static'),
+# )
 
 STATICFILES_FINDERS = (
     'django.contrib.staticfiles.finders.FileSystemFinder',
