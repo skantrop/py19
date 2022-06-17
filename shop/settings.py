@@ -43,8 +43,6 @@ INSTALLED_APPS = [
     'drf_yasg',
     'rest_framework_simplejwt',
     # 'whitenoise.runserver_nostatic',
-    "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     'corsheaders',
 
     #apps
@@ -60,6 +58,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
 ]
 
 ROOT_URLCONF = 'shop.urls'
