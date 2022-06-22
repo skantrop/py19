@@ -17,6 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from main.views import *
 from rest_framework.routers import SimpleRouter
+from django.conf import settings, static
+
 
 router = SimpleRouter()
 router.register('products', ProductViewSet)
@@ -31,4 +33,6 @@ urlpatterns = [
     path('favorites/', FavoriteView.as_view()),
 
 ]
-
+if settings.DEBUG:
+  urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+  urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
