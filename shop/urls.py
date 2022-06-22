@@ -17,7 +17,8 @@ from django.contrib import admin
 from django.urls import path, include
 from main.views import *
 from rest_framework.routers import SimpleRouter
-from django.conf import settings, static
+from django.conf import settings
+from django.conf.urls.static import static
 
 
 router = SimpleRouter()
